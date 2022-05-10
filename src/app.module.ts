@@ -5,6 +5,7 @@ import { ConfigModule, ConfigType } from '@nestjs/config';
 import { appConfig } from '../configuration/app.config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { databaseConfig } from '../configuration/database.config';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { databaseConfig } from '../configuration/database.config';
       inject: [databaseConfig.KEY],
       useFactory: (config: ConfigType<typeof databaseConfig>) => config,
     }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
