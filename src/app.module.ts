@@ -6,6 +6,7 @@ import { appConfig } from '../configuration/app.config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { databaseConfig } from '../configuration/database.config';
 import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { UserModule } from './user/user.module';
       useFactory: (config: ConfigType<typeof databaseConfig>) => config,
     }),
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
